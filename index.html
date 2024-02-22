@@ -95,24 +95,46 @@
         />
         <!-- Styles -->
         <link rel="stylesheet" href="./assets/css/style.css" />
+        <link rel="stylesheet" href="./assets/css/responsive.css" />
     </head>
+
     <body>
+        <!----------------------------------------- Responsive PC ----------------------------------------->
         <header class="fix-header">
             <div class="content">
                 <nav class="navbar">
+                    <!-- Tablet & Mobile Menu -->
+                    <label for="menu-checkbox" class="toggle-menu">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"
+                        >
+                            <path
+                                fill="currentColor"
+                                d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
+                            />
+                        </svg>
+                    </label>
+
                     <!-- Logo -->
-                    <a href="#"
-                        ><img src="./assets/img/Logo.svg" alt="Besnik."
-                    /></a>
+                    <a href="#" class="Logo"
+                        ><img src="./assets/img/Logo.svg" alt="Besnik." />
+                    </a>
 
                     <!-- Navigation -->
 
-                    <ul>
+                    <ul id="pc-nav">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#Features">Features</a></li>
                         <li><a href="#Services">Services</a></li>
                         <li><a href="#Resources">Resources</a></li>
                         <li><a href="#Contact">Contact</a></li>
+                        <li class="show-on-mobile separate">
+                            <a href="#SignIn">Sign In</a>
+                        </li>
+                        <li class="show-on-mobile">
+                            <a href="#SignUp">Sign Up</a>
+                        </li>
                     </ul>
 
                     <!-- Action -->
@@ -124,6 +146,42 @@
                 </nav>
             </div>
         </header>
+
+        <!------------------------------------ Responsive Tablet & Mobile ------------------------------------>
+        <!-- + Ý tưởng là sẽ tạo cái nút nhấn menu bên cùng bên trái bằng thẻ label
+                + Sau đó nhấn vào để hiện 
+                + Thì đầu tiên là tạo 1 cái thẻ cha bao phủ toàn bộ (ví dụ bên dưới tên là menu-overlay)-->
+
+        <header class="mobile-header">
+            <input
+                type="checkbox"
+                name=""
+                id="menu-checkbox"
+                class="menu-checkbox"
+                hidden
+            />
+
+            <!-- Big Menu - Overlay -->
+            <label for="menu-checkbox" class="menu-overlay"></label>
+            <!-- Menu Content -->
+            <div class="menu-drawer">
+                <!-- Logo -->
+                <a href="#"
+                    ><img src="./assets/img/Logo.svg" alt="Besnik." />
+                </a>
+
+                <!-- Navigation -->
+                <ul id="mobile-nav"></ul>
+                <script>
+                    const pcNav = document.querySelector("#pc-nav");
+                    const mobileNav = document.querySelector("#mobile-nav");
+                    mobileNav.innerHTML = pcNav.innerHTML;
+                </script>
+            </div>
+        </header>
+
+        <!----------------------------------------------------- Main ---------------------------------------------------->
+
         <main id="home">
             <!--  Hero -->
             <div class="hero-wrap">
@@ -612,6 +670,7 @@
                 </div>
             </div>
         </main>
+
         <!-- Footer -->
         <footer id="Contact" class="footer">
             <div class="content">
